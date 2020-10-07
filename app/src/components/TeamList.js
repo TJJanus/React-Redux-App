@@ -8,27 +8,35 @@ const TeamList = props => {
     e.preventDefault();
     props.getTeams();
   }
-  console.log(props)
+
+  const { teams } = props;
+
+  console.log('Props', props)
   return (
     <div>
       <h1>NHL Teams</h1>
       {props.isLoading && <p>Fetching your Teams</p>}
 
-
-      {/* <div>
-      {props.teams.map((teams) => (
-        <h1 key={teams.id}>{teams.name}</h1>
-      ))}
-      </div> */}
-
-      <h2>{props.teams.name}</h2>
       
-   
+       <div>
+      {teams.map((team) => (
+        <>
+        <h1 key={team.id}>{team.name}</h1>
+        <h4>{team.venue.name}</h4>
+        <a href={team.officialSiteUrl}>{team.name}</a>
+        </>
+      ))}
+      </div> 
 
     
       
       {props.error && <p className="error">{props.error}</p>}
       <button onClick={fetchTeams}>Fetch Teams</button>
+      
+      
+      
+      
+      
     </div>
   )
 }

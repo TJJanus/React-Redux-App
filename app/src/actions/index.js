@@ -11,7 +11,7 @@ export const getTeams = () => (dispatch) => {
         .then((res) => {
             console.log(res)
             dispatch({
-                type: FETCH_TEAM_SUCCESS, payload: res.data
+                type: FETCH_TEAM_SUCCESS, payload: res.data.teams
             })
         })
         .catch((err) => {
